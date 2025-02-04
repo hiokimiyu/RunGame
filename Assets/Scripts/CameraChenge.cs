@@ -6,14 +6,15 @@ public class CameraChenge : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera[] _camera = new CinemachineVirtualCamera[2];
     int _priorityNum = 11;
     int _dwonNum = 10;
+    bool _isGoalCamera = false;
 
 
     private void Update()
     {
-        if(GameManager.Instance.NowState == GameState.Result 
-            && GameManager.Instance.BeforeState == GameState.Game)
+        if (GameManager.Instance.NowState == GameState.Result && !_isGoalCamera)
         {
             GoalCamera();
+            _isGoalCamera = true;
         }
     }
 
